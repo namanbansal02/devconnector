@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExperience } from '../../action/profile';
+import { addExperience } from '../../actions/profile';
 
-const AddExperience = ({ addExperience, history }) => {
+const AddExperience = ({ addExperience }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
     title: '',
@@ -15,107 +16,112 @@ const AddExperience = ({ addExperience, history }) => {
     description: ''
   });
 
-  const [toDateDisabled, toggleDisabled] = useState(false);
-
   const { company, title, location, from, to, current, description } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Add An Experience</h1>
-      <p className='lead'>
-        <i className='fas fa-code-branch' /> Add any developer/programming positions
-        that you have had in the past
+    <section className="container mx-auto p-16">
+      <h1 className="text-4xl text-primary font-bold mb-4">Add An Experience</h1>
+      <p className="text-lg">
+        <i className="fas fa-code-branch" /> Add any developer/programming
+        positions that you have had in the past
       </p>
-      <small>* = required field</small>
+      <small className="text-sm text-gray-500">* = required field</small>
       <form
-        className='form'
-        onSubmit={e => {
+        className="mt-4 space-y-4"
+        onSubmit={(e) => {
           e.preventDefault();
-          addExperience(formData, history);
+          addExperience(formData).then(() => navigate('/dashboard'));
         }}
       >
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='* Job Title'
-            name='title'
+            type="text"
+            placeholder="* Job Title"
+            name="title"
             value={title}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             required
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='* Company'
-            name='company'
+            type="text"
+            placeholder="* Company"
+            name="company"
             value={company}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             required
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='Location'
-            name='location'
+            type="text"
+            placeholder="Location"
+            name="location"
             value={location}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
-          <h4>From Date</h4>
+        <div className="form-group">
+          <h4 className="text-lg font-bold">From Date</h4>
           <input
-            type='date'
-            name='from'
+            type="date"
+            name="from"
             value={from}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <p>
             <input
-              type='checkbox'
-              name='current'
+              type="checkbox"
+              name="current"
               checked={current}
               value={current}
               onChange={() => {
                 setFormData({ ...formData, current: !current });
-                toggleDisabled(!toDateDisabled);
               }}
             />{' '}
             Current Job
           </p>
         </div>
-        <div className='form-group'>
-          <h4>To Date</h4>
+        <div className="form-group">
+          <h4 className="text-lg font-bold">To Date</h4>
           <input
-            type='date'
-            name='to'
+            type="date"
+            name="to"
             value={to}
-            onChange={e => onChange(e)}
-            disabled={toDateDisabled ? 'disabled' : ''}
+            onChange={onChange}
+            disabled={current}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <textarea
-            name='description'
-            cols='30'
-            rows='5'
-            placeholder='Job Description'
+            name="description"
+            cols="30"
+            rows="5"
+            placeholder="Job Description"
             value={description}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="textarea textarea-bordered w-full"
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
+        <button type="submit" className="btn btn-primary w-full">
+          Submit
+        </button>
+        <Link to="/dashboard" className="btn btn-light w-full">
           Go Back
         </Link>
       </form>
-    </Fragment>
+    </section>
   );
 };
 
@@ -123,7 +129,4 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
-  { addExperience }
-)(withRouter(AddExperience));
+export default connect(null, { addExperience })(AddExperience);

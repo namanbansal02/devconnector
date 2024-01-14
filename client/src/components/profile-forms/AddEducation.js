@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addEducation } from '../../action/profile';
+import { addEducation } from '../../actions/profile';
 
-const AddEducation = ({ addEducation, history }) => {
+const AddEducation = ({ addEducation }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     school: '',
     degree: '',
@@ -15,115 +16,111 @@ const AddEducation = ({ addEducation, history }) => {
     description: ''
   });
 
-  const [toDateDisabled, toggleDisabled] = useState(false);
+  const { school, degree, fieldofstudy, from, to, description, current } =
+    formData;
 
-  const {
-    school,
-    degree,
-    fieldofstudy,
-    from,
-    to,
-    current,
-    description
-  } = formData;
-
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Add Your Education</h1>
-      <p className='lead'>
-        <i className='fas fa-code-branch' /> Add any school or bootcamp that you
+    <section className="container mx-auto p-16">
+      <h1 className="text-4xl text-primary font-bold mb-4">Add Your Education</h1>
+      <p className="text-lg">
+        <i className="fas fa-code-branch" /> Add any school or bootcamp that you
         have attended
       </p>
-      <small>* = required field</small>
+      <small className="text-sm text-gray-500">* = required field</small>
       <form
-        className='form'
-        onSubmit={e => {
+        className="mt-4 space-y-4"
+        onSubmit={(e) => {
           e.preventDefault();
-          addEducation(formData, history);
+          addEducation(formData).then(() => navigate('/dashboard'));
         }}
       >
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='* School or Bootcamp'
-            name='school'
+            type="text"
+            placeholder="* School or Bootcamp"
+            name="school"
             value={school}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             required
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='* Degree or Certificate'
-            name='degree'
+            type="text"
+            placeholder="* Degree or Certificate"
+            name="degree"
             value={degree}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             required
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='text'
-            placeholder='Field of Study'
-            name='fieldofstudy'
+            type="text"
+            placeholder="Field of Study"
+            name="fieldofstudy"
             value={fieldofstudy}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
-          <h4>From Date</h4>
+        <div className="form-group">
+          <h4 className="text-lg font-bold">From Date</h4>
           <input
-            type='date'
-            name='from'
+            type="date"
+            name="from"
             value={from}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <p>
             <input
-              type='checkbox'
-              name='current'
+              type="checkbox"
+              name="current"
               checked={current}
               value={current}
-              onChange={() => {
-                setFormData({ ...formData, current: !current });
-                toggleDisabled(!toDateDisabled);
-              }}
+              onChange={() => setFormData({ ...formData, current: !current })}
             />{' '}
             Current School
           </p>
         </div>
-        <div className='form-group'>
-          <h4>To Date</h4>
+        <div className="form-group">
+          <h4 className="text-lg font-bold">To Date</h4>
           <input
-            type='date'
-            name='to'
+            type="date"
+            name="to"
             value={to}
-            onChange={e => onChange(e)}
-            disabled={toDateDisabled ? 'disabled' : ''}
+            onChange={onChange}
+            disabled={current}
+            className="input input-bordered w-full"
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <textarea
-            name='description'
-            cols='30'
-            rows='5'
-            placeholder='Program Description'
+            name="description"
+            cols="30"
+            rows="5"
+            placeholder="Program Description"
             value={description}
-            onChange={e => onChange(e)}
+            onChange={onChange}
+            className="textarea textarea-bordered w-full"
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
+        <button type="submit" className="btn btn-primary w-full">
+          Submit
+        </button>
+        <Link to="/dashboard" className="btn btn-light w-full">
           Go Back
         </Link>
       </form>
-    </Fragment>
+    </section>
   );
 };
 
@@ -131,7 +128,4 @@ AddEducation.propTypes = {
   addEducation: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
-  { addEducation }
-)(withRouter(AddEducation));
+export default connect(null, { addEducation })(AddEducation);
