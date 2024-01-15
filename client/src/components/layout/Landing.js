@@ -29,7 +29,7 @@ const Landing = ({ isAuthenticated }) => {
     //   </div>
     // </section>
 
-    <div className='bg-gray-800'>
+    <div className=' dark bg-gray-800'>
 
       <section className="p-8 md:py-20 bg-gray-900 text-white dark:bg-gray-800">
         <article className="text-center max-w-3xl mx-auto">
@@ -42,9 +42,12 @@ const Landing = ({ isAuthenticated }) => {
             struggling to connect with many people, create meaningful connections through genuine discussions.
           </p>
 
-          <button className="bg-pink-500 py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl hover:bg-pink-600 transition duration-300">
-            Get Started For Free
-          </button>
+          <Link to='/register'>
+  <button className="bg-accent py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl hover:bg-accent transition duration-300">
+    Get Started For Free
+  </button>
+</Link>
+
         </article>
 
         <article className="my-8">
@@ -78,7 +81,7 @@ const Landing = ({ isAuthenticated }) => {
           <div className="bg-blue-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto py-20 px-8 flex flex-col-reverse md:grid md:grid-cols-2 gap-16 md:place-items-center">
               <article className="text-center md:text-left">
-                <h3 className="text-2xl text-blue-900 dark:text-white mb-8 md:text-3xl lg:text-4xl">
+                <h3 className="text-2xl text-blue-900 dark:text-white mb-8 md:text-3xl lg:text-4xl  dark:bg-gray-800">
                   Grow Together
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-loose mb-8 lg:text-base lg:leading-relaxed">
@@ -109,11 +112,12 @@ const Landing = ({ isAuthenticated }) => {
                 <h3 className="text-2xl text-blue-900 dark:text-white mb-8 md:text-3xl lg:text-4xl">
                   Flowing Conversations
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-loose mb-8 lg:text-base lg:leading-relaxed">
-                  You wouldn't be able to connect with so many people at a time.
-                  But why worry when you have Devhub?
-                  You can connect with many people simultaneously and have flowing conversations with them.
-                </p>
+                <p class="text-gray-600 dark:bg-gray-800 dark:text-gray-400 text-sm leading-loose mb-8 lg:text-base lg:leading-relaxed">
+  You wouldn't be able to connect with so many people at a time.
+  But why worry when you have Devhub?
+  You can connect with many people simultaneously and have flowing conversations with them.
+</p>
+
               </article>
 
               <article>
@@ -166,9 +170,12 @@ const Landing = ({ isAuthenticated }) => {
         <h2 className="text-3xl lg:text-5xl text-center text-gray-900 dark:text-white">
           Ready To Build Your Community?
         </h2>
-        <button className="bg-pink-400 py-2 px-4 rounded-full text-white shadow text-sm lg:text-base hover:bg-pink-500">
-          Get Started For Free
-        </button>
+        <Link to="/register">
+  <button className="bg-accent py-2 px-4 rounded-full text-white shadow text-sm lg:text-base hover:bg-accent-200">
+    Get Started For Free
+  </button>
+</Link>
+
       </section>
 
 
@@ -200,9 +207,9 @@ const Landing = ({ isAuthenticated }) => {
             </ul>
 
             <ul className="flex items-center justify-start gap-4">
-              <li className="text-white text-3xl"><i className="fab fa-facebook"></i></li>
-              <li className="text-white text-3xl"><i className="fab fa-instagram"></i></li>
-              <li className="text-white text-3xl"><i className="fab fa-twitter"></i></li>
+              <li className="text-white text-3xl hover:text-accent transition-colors"><i className="fab fa-facebook"></i></li>
+              <li className="text-white text-3xl hover:text-accent transition-colors"><i className="fab fa-instagram"></i></li>
+              <li className="text-white text-3xl hover:text-accent transition-colors"><i className="fab fa-linkedin"></i></li>
             </ul>
           </article>
 
@@ -226,7 +233,7 @@ const Landing = ({ isAuthenticated }) => {
               <input
                 type="submit"
                 value="Subscribe"
-                className="bg-pink-400 py-2 px-4 rounded text-white shadow text-sm lg:text-base"
+                className="bg-accent py-2 px-4 rounded text-white shadow text-sm lg:text-base"
               />
             </form>
           </article>
@@ -237,7 +244,7 @@ const Landing = ({ isAuthenticated }) => {
   <p className="attribution">
     Project done by
     <a
-      href="https://www.frontendmentor.io?ref=challenge"
+      href="https://github.com/Saurabh13042004/devconnector"
       target="_blank"
       className="text-pink-400 hover:underline"
     >
