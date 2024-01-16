@@ -43,7 +43,7 @@ const Landing = ({ isAuthenticated }) => {
           </p>
 
           <Link to='/register'>
-  <button className="bg-accent py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl hover:bg-accent transition duration-300">
+  <button className="bg-success hover:shadow-lg doe py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl  transition duration-300">
     Get Started For Free
   </button>
 </Link>
@@ -171,7 +171,7 @@ const Landing = ({ isAuthenticated }) => {
           Ready To Build Your Community?
         </h2>
         <Link to="/register">
-  <button className="bg-accent py-2 px-4 rounded-full text-white shadow text-sm lg:text-base hover:bg-accent-200">
+  <button className="bg-success py-3 px-5 rounded-full text-white shadow text-sm lg:text-base hover:bg-accent-200">
     Get Started For Free
   </button>
 </Link>
