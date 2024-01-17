@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -43,10 +44,10 @@ const Landing = ({ isAuthenticated }) => {
           </p>
 
           <Link to='/register'>
-  <button className="bg-success hover:shadow-lg doe py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl  transition duration-300">
-    Get Started For Free
-  </button>
-</Link>
+            <button className="bg-success hover:shadow-lg doe py-3 px-6 rounded-full text-white shadow-md text-lg lg:text-xl  transition duration-300">
+              Get Started For Free
+            </button>
+          </Link>
 
         </article>
 
@@ -113,10 +114,10 @@ const Landing = ({ isAuthenticated }) => {
                   Flowing Conversations
                 </h3>
                 <p class="text-gray-600 dark:bg-gray-800 dark:text-gray-400 text-sm leading-loose mb-8 lg:text-base lg:leading-relaxed">
-  You wouldn't be able to connect with so many people at a time.
-  But why worry when you have Devhub?
-  You can connect with many people simultaneously and have flowing conversations with them.
-</p>
+                  You wouldn't be able to connect with so many people at a time.
+                  But why worry when you have Devhub?
+                  You can connect with many people simultaneously and have flowing conversations with them.
+                </p>
 
               </article>
 
@@ -171,10 +172,10 @@ const Landing = ({ isAuthenticated }) => {
           Ready To Build Your Community?
         </h2>
         <Link to="/register">
-  <button className="bg-success py-3 px-5 rounded-full text-white shadow text-sm lg:text-base hover:bg-accent-200">
-    Get Started For Free
-  </button>
-</Link>
+          <button className="bg-success py-3 px-5 rounded-full text-white shadow text-sm lg:text-base hover:bg-accent-200">
+            Get Started For Free
+          </button>
+        </Link>
 
       </section>
 
@@ -239,24 +240,25 @@ const Landing = ({ isAuthenticated }) => {
           </article>
         </div>
       </footer>
-
+    
       <footer className="text-center py-4 bg-gray-900 text-white">
-  <p className="attribution">
-    Project done by
-    <a
-      href="https://github.com/Saurabh13042004/devconnector"
-      target="_blank"
-      rel='noreferrer'
-      className="text-pink-400 hover:underline"
-    >
-      Dev connectors
-    </a>
-    Coded by
-    <a href="#" className="text-pink-400 hover:underline">
-      Dev Connectors
-    </a>
-  </p>
-</footer>
+        <p className="attribution">
+          Project done by
+          <a
+            href="https://github.com/Saurabh13042004/devconnector"
+            target="_blank"
+            rel='noreferrer'
+            className="text-pink-400 hover:underline"
+          >
+            Dev connectors
+          </a>
+          Coded by
+
+          <a href="#" className="text-pink-400 hover:underline">
+            Dev Connectors
+          </a>
+        </p>
+      </footer>
 
     </div>
 
