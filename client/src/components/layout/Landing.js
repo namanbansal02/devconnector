@@ -246,12 +246,13 @@ const Landing = ({ isAuthenticated }) => {
     <a
       href="https://github.com/Saurabh13042004/devconnector"
       target="_blank"
+      rel='noreferrer'
       className="text-pink-400 hover:underline"
     >
       Dev connectors
     </a>
     Coded by
-    <a href="" className="text-pink-400 hover:underline">
+    <a href="#" className="text-pink-400 hover:underline">
       Dev Connectors
     </a>
   </p>
